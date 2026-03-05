@@ -10,7 +10,7 @@ namespace Carola.DataAccesLayer.Abstract
 	{
 		Task InsertAsync(T entity);
 
-		Task DeleteAsync(T entity);
+		Task DeleteAsync(int id);
 		Task UpdateAsync(T entity);
 		Task<List<T>> GetAllAsync();
 		Task<T> GetByIdAsync(int id);
