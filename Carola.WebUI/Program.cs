@@ -1,4 +1,13 @@
+using Carola.BusinessLayer.Abstract;
+using Carola.BusinessLayer.Concrete;
+using Carola.DataAccesLayer.Abstract;
+using Carola.DataAccesLayer.Concrete;
+using Carola.DataAccesLayer.Entity_Framework;
+
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<CarolaContext>();
+builder.Services.AddScoped<IBrandService,BrandManager>();
+builder.Services.AddScoped<IBrandDal, EFBrandDal>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
