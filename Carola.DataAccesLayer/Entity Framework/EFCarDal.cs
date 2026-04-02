@@ -2,6 +2,7 @@
 using Carola.DataAccesLayer.Concrete;
 using Carola.DataAccesLayer.Repository;
 using Carola.EntityLayer.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,13 @@ namespace Carola.DataAccesLayer.Entity_Framework
 	{
 		public EFCarDal(CarolaContext context) : base(context)
 		{
+		}
+
+		public async Task<List<Car>> GetAllCarsWithCategoryAsync()
+		{
+			var context= new CarolaContext();
+			var values=await context.Cars.Include(x=>x.Category).ToListAsync();
+			return values;
 		}
 	}
 }

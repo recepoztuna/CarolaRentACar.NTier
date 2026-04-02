@@ -8,6 +8,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<CarolaContext>();
 builder.Services.AddScoped<IBrandService,BrandManager>();
 builder.Services.AddScoped<IBrandDal, EFBrandDal>();
+builder.Services.AddScoped<ICarService,CarManager>();
+builder.Services.AddScoped<ICarDal,EFCarDal>();
+builder.Services.AddScoped<ICategoryService, CategoryManager>();
+builder.Services.AddScoped<ICategoryDal,EFCategoryDal>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

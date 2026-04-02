@@ -9,6 +9,6 @@ namespace Carola.DataAccesLayer.Abstract
 {
 	public interface ICarDal: IGenericDal<Car>
 	{
-
+		Task<List<Car>> GetAllCarsWithCategoryAsync();
 	}
 }
