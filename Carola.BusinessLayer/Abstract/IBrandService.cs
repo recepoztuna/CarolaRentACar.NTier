@@ -1,4 +1,5 @@
-﻿using Carola.EntityLayer.Entities;
+﻿using Carola.DtoLayer.Dtos.BrandDtos;
+using Carola.EntityLayer.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,12 @@ using System.Threading.Tasks;
 
 namespace Carola.BusinessLayer.Abstract
 {
-	public interface IBrandService:IGenericService<Brand>
+	public interface IBrandService
 	{
+		Task<List<ResultBrandDto>> GetAllBrandAsync();
+		Task<GetBrandByIdDto> GetBrandByIdAsync(int id);
+		Task CreateBrandAsync(CreateBrandDto createBrandDto);
+		Task UpdateBrandAsync(UpdateBrandDto updateBrandDto);
+		Task DeleteBrandAsync(int id);
 	}
 }

@@ -1,4 +1,5 @@
 ﻿using Carola.BusinessLayer.Abstract;
+using Carola.DtoLayer.Dtos.BrandDtos;
 using Carola.EntityLayer.Entities;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,7 +17,7 @@ namespace Carola.WebUI.Areas.Admin.Controllers
 
 		public async Task<IActionResult> BrandList()
 		{
-			var values= await _brandService.TGetAllAsync();
+			var values= await _brandService.GetAllBrandAsync();
 			return View(values);
 		}
 		[HttpGet]
@@ -25,26 +26,26 @@ namespace Carola.WebUI.Areas.Admin.Controllers
 			return View();
 		}
 		[HttpPost]
-		public async Task<IActionResult> CreateBrand(Brand brand)
+		public async Task<IActionResult> CreateBrand(CreateBrandDto createBrandDto)
 		{
-			await _brandService.TInsertAsync(brand);
+			await _brandService.CreateBrandAsync(createBrandDto);
 			return RedirectToAction("BrandList");
 		}
 		[HttpGet]
 		public async Task<IActionResult> UpdateBrand(int id)
 		{
-			var values=await _brandService.TGetByIdAsync(id);
+			var values=await _brandService.GetBrandByIdAsync(id);
 			return View(values);
 		}
 		[HttpPost]
-		public async Task<IActionResult> UpdateBrand(Brand brand)
+		public async Task<IActionResult> UpdateBrand(UpdateBrandDto updateBrandDto)
 		{
-			await _brandService.TUpdateAsync(brand);
+			await _brandService.UpdateBrandAsync(updateBrandDto);
 			return RedirectToAction("BrandList");
 		}
 		public async Task<IActionResult> Delete(int id)
 		{
-			await _brandService.TDeleteAsync(id);
+			await _brandService.DeleteBrandAsync(id);
 			return RedirectToAction("BrandList");
 		}
 	}

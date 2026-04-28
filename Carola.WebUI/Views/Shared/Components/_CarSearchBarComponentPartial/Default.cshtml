@@ -1,0 +1,128 @@
+﻿@model List<Carola.DtoLayer.Dtos.LocationDtos.ResultLocationDto>
+
+<section class="booking-section home-three">
+    <div class="container">
+        <div class="filter-wrapper">
+            <div class="filter-group">
+                <form asp-controller="Car" asp-action="Search" method="get">
+                    <div class="filter-area">
+                        <div class="row">
+                            <div class="col-xl-3 col-md-6 col-sm-12 colmun">
+                                <div class="single-search-box">
+                                    <div class="icon"><i class="icon-24"></i></div>
+                                    <div class="searchbox-input">
+                                        <label>Konum Seçin</label>
+                                        <div class="custom-select-dropdown">
+                                            <div class="select-input">
+                                                <input type="text" id="selectedLocationText" readonly value="Konum Seçin" />
+                                                <input type="hidden" name="locationId" id="selectedLocationId" />
+                                                <i class="fas fa-angle-down"></i>
+                                            </div>
+                                            <div class="custom-select-wrap">
+                                                <div class="custom-select-search-area">
+                                                    <i class="fas fa-magnifying-glass"></i>
+                                                    <input type="text" id="locationSearch" placeholder="Konum Ara..." />
+                                                </div>
+                                                <ul class="option-list" id="locationList">
+                                                    @foreach (var item in Model)
+                                                    {
+                                                        <li data-id="@item.LocationId" data-name="@item.LocationName">
+                                                            <div class="destination">
+                                                                <h6>@item.LocationName</h6>
+                                                                <p>@item.City </p>
+                                                            </div>
+                                                            <div class="tour">
+                                                                <span>
+                                                                    @item.AuthorizedPersonName <br />
+                                                                    Yetkili
+                                                                </span>
+                                                            </div>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6 col-sm-12 colmun">
+                                <div class="single-search-box">
+                                    <div class="icon"><i class="icon-25"></i></div>
+                                    <div class="searchbox-input">
+                                        <label>Alış Tarihi</label>
+                                        <div class="custom-select-dropdown">
+                                            <div class="select-input">
+                                                <input type="date" name="startDate" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6 col-sm-12 colmun">
+                                <div class="single-search-box">
+                                    <div class="icon"><i class="icon-26"></i></div>
+                                    <div class="searchbox-input">
+                                        <label>İade Tarihi</label>
+                                        <div class="custom-select-dropdown">
+                                            <div class="select-input">
+                                                <input type="date" name="endDate" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6 col-sm-12 colmun">
+                                <div class="single-search-box">
+                                    <div class="icon"><i class="icon-27"></i></div>
+                                    <div class="searchbox-input">
+                                        <label>Kapasite</label>
+                                        <div class="custom-select-dropdown">
+                                            <div class="select-input">
+                                                <h6><span id="adult-qty">1</span> Kişi</h6>
+                                                <i class="fas fa-angle-down"></i>
+                                            </div>
+                                            <div class="custom-select-wrap two no-scroll">
+                                                <ul class="guest-count">
+                                                    <li class="single-item">
+                                                        <div class="title">
+                                                            <h6>Kapasite</h6>
+                                                            <span>Kişi Sayısı</span>
+                                                        </div>
+                                                        <div class="quantity-counter">
+                                                            <a href="#" data-type="adult" class="guest-quantity__minus"><i class="fas fa-minus"></i></a>
+                                                            <input name="capacity" type="text" class="quantity__input" value="1" />
+                                                            <a href="#" data-type="adult" class="guest-quantity__plus"><i class="fas fa-plus"></i></a>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit">Ara</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Lokasyon seçince hidden input'a ID yaz
+    document.querySelectorAll('#locationList li').forEach(function (li) {
+        li.addEventListener('click', function () {
+            document.getElementById('selectedLocationText').value = this.dataset.name;
+            document.getElementById('selectedLocationId').value = this.dataset.id;
+        });
+    });
+
+    // Arama filtresi
+    document.getElementById('locationSearch').addEventListener('input', function () {
+        var search = this.value.toLowerCase();
+        document.querySelectorAll('#locationList li').forEach(function (li) {
+            li.style.display = li.dataset.name.toLowerCase().includes(search) ? '' : 'none';
+        });
+    });
+</script>

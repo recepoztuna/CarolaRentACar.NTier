@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Carola.DtoLayer.Dtos.ReservationDtos
+{
+	public class CreateReservationDto
+	{
+		public int CarId { get; set; }
+		public int CustomerId { get; set; }
+		public DateTime PickupDate { get; set; }
+		public DateTime ReturnDate { get; set; }
+		public int PickupLocationId { get; set; }
+		public int ReturnLocationId { get; set; }
+		public string Description { get; set; }
+	}
+}

@@ -1,6 +1,9 @@
-﻿using Carola.BusinessLayer.Abstract;
+﻿using AutoMapper;
+using Carola.BusinessLayer.Abstract;
 using Carola.DataAccesLayer.Abstract;
+using Carola.DtoLayer.Dtos.CarDtos;
 using Carola.EntityLayer.Entities;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,40 +15,55 @@ namespace Carola.BusinessLayer.Concrete
 	public class CarManager : ICarService
 	{
 		private readonly ICarDal _carDal;
+		private readonly IMapper _mapper;
+		private readonly IValidator<CreateCarDto> _createValidator;
+		private readonly IValidator<UpdateCarDto> _updateValidator;
 
-		public CarManager(ICarDal carDal)
+		public CarManager(ICarDal carDal, IMapper mapper,
+			IValidator<CreateCarDto> createValidator,
+			IValidator<UpdateCarDto> updateValidator)
 		{
 			_carDal = carDal;
+			_mapper = mapper;
+			_createValidator = createValidator;
+			_updateValidator = updateValidator;
 		}
 
-		public async Task TDeleteAsync(int id)
+		public async Task CreateCarAsync(CreateCarDto createCarDto)
+		{
+			var validationResult = await _createValidator.ValidateAsync(createCarDto);
+			if (!validationResult.IsValid)
+				throw new ValidationException(validationResult.Errors);
+
+			var value = _mapper.Map<Car>(createCarDto);
+			await _carDal.InsertAsync(value);
+		}
+
+		public async Task DeleteCarAsync(int id)
 		{
 			await _carDal.DeleteAsync(id);
 		}
 
-		public async Task<List<Car>> TGetAllAsync()
+		public async Task<List<ResultCarDto>> GetAllCarAsync()
 		{
-			return await _carDal.GetAllAsync();
+			var values = await _carDal.GetAllAsync();
+			return _mapper.Map<List<ResultCarDto>>(values);
 		}
 
-		public async Task<List<Car>> TGetAllCarsWithCategoryAsync()
+		public async Task<GetCarByIdDto> GetCarByIdAsync(int id)
 		{
-			return await _carDal.GetAllCarsWithCategoryAsync();
+			var value = await _carDal.GetByIdAsync(id);
+			return _mapper.Map<GetCarByIdDto>(value);
 		}
 
-		public async Task<Car> TGetByIdAsync(int id)
+		public async Task UpdateCarAsync(UpdateCarDto updateCarDto)
 		{
-			return await _carDal.GetByIdAsync(id);
-		}
+			var validationResult = await _updateValidator.ValidateAsync(updateCarDto);
+			if (!validationResult.IsValid)
+				throw new ValidationException(validationResult.Errors);
 
-		public async Task TInsertAsync(Car entity)
-		{
-			await _carDal.InsertAsync(entity);
-		}
-
-		public async Task TUpdateAsync(Car entity)
-		{
-			await _carDal.UpdateAsync(entity);
+			var value = _mapper.Map<Car>(updateCarDto);
+			await _carDal.UpdateAsync(value);
 		}
 	}
 }

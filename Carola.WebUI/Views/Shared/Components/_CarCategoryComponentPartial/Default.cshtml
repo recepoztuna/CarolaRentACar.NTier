@@ -1,0 +1,29 @@
+﻿@model List<Carola.DtoLayer.Dtos.CategoryDtos.ResultCategoryDto>
+
+<section class="car-type-section pt_120 pb_90 home-three">
+    <div class="container">
+        <div class="section-title centred mb_60">
+            <span class="sub-title">Araç Tipleri</span>
+            <h2 class="title">Kategorileri Keşfet</h2>
+        </div>
+        <div class="car-type-outer-box">
+            @foreach (var item in Model)
+            {
+                <div class="car-type-item">
+                    <div class="car-image">
+                        <img src="@item.ImageUrl"
+                             alt="@item.CategoryName"
+                             style="width:180px; height:120px; object-fit:contain;"
+                             onerror="this.src='/carola/carola/assets/images/car-type/car-1.png'">
+                        <div class="shape">
+                            <img src="~/carola/carola/assets/images/shape/shape-2.png" alt="">
+                        </div>
+                    </div>
+                    <div class="car-name" style="margin-top: 15px;">
+                        <h6><a href="#">@item.CategoryName</a></h6>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

@@ -1,0 +1,392 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+    @await Component.InvokeAsync("_CarHeadComponentPartial")
+
+
+<!-- Page Wrapper -->
+<body class="boxed_wrapper">
+
+    <!-- preloader -->
+    <div class="loader-wrap">
+        <div class="preloader">
+            <div class="preloader-close">x</div>
+            <div id="handle-preloader" class="handle-preloader">
+                <div class="animation-preloader">
+                    <div class="spinner"></div>
+                    <div class="txt-loading">
+                        <span data-text-preloader="C" class="letters-loading">
+                            C
+                        </span>
+                        <span data-text-preloader="a" class="letters-loading">
+                            a
+                        </span>
+                        <span data-text-preloader="r" class="letters-loading">
+                            r
+                        </span>
+                        <span data-text-preloader="o" class="letters-loading">
+                            o
+                        </span>
+                        <span data-text-preloader="l" class="letters-loading">
+                            l
+                        </span>
+                        <span data-text-preloader="a" class="letters-loading">
+                            a
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- preloader end -->
+    <!--Search Popup-->
+    <div id="search-popup" class="search-popup">
+        <div class="popup-inner">
+            <div class="container">
+                <div class="upper-box">
+                    <figure class="logo-box"><a href="index.html"><img src="~/carola/carola/assets/images/logo.png" alt=""></a></figure>
+                    <div class="close-search"><span class="fa-solid fa-xmark"></span></div>
+                </div>
+            </div>
+            <div class="overlay-layer"></div>
+            <div class="container">
+                <div class="search-form">
+                    <form method="post" action="index.html">
+                        <div class="form-group">
+                            <fieldset>
+                                <input type="search" class="form-control" name="search-input" value="" placeholder="Lütfen aramak istediğiniz kelimeyi girerek Enter tuşuna basınız." required>
+                                <button type="submit"><i class="icon-50"></i></button>
+                            </fieldset>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End Search Popup-->
+    <!-- Main Header -->
+
+    <style>
+        .header-top-one {
+            color: #ffffff;
+        }
+
+            .header-top-one p,
+            .header-top-one a,
+            .header-top-one i {
+                color: #ffffff !important;
+            }
+    </style>
+    <header class="header home-three">
+        <!-- Header Top -->
+        <div class="header-top-one">
+            <div class="container">
+                <div class="header-top-outer">
+                    <div class="header-top-info">
+                        <i class="far fa-clock"></i>
+                        <p>Çalışma Saatlerimiz: Pazartesi - Cuma 08:00 - 18:00</p>
+                    </div>
+                    <div class="header-top-contact-info">
+                        <ul>
+                            <li><i class="icon-22"></i><a href="#">+90-589-455-2659</a></li>
+                            <li><i class="icon-23"></i><a href="#">carola@gmail.com</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Header Top -->
+        <!-- Main Header -->
+        <div class="main_header">
+            <div class="container">
+                <div class="main_header_inner">
+                    <div class="main_header_logo">
+                        <figure>
+                            <a href="index.html"><img src="~/carola/carola/assets/images/logo-light.png" alt="Companny Logo"></a>
+                        </figure>
+                    </div>
+                    <div class="main_header_menu menu_area">
+                        <!--Mobile Navigation Toggler-->
+                        <div class="mobile-nav-toggler">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </div>
+                        <nav class="main-menu">
+                            <div class="collapse navbar-collapse show" id="navbarSupportedContent">
+                                <ul class="navigation">
+                                    <li class="dropdown active">
+                                        <a href="index.html">Ana Sayfa</a>
+                                        
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="index.html">Araçlarımız</a>
+                                        
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="index.html">Kurumsal</a>
+                                        <ul>
+                                            <li><a href="about-us.html">Hakkımızda</a></li>
+                                           
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="index.html">Haberler</a>
+                                        <ul>
+                                            
+                                        </ul>
+                                    </li>
+                                    <li><a href="contact.html">İletişim</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="header_right_content">
+                        <button class="search-toggler"><i class="fas fa-search"></i></button>
+                        <div class="language-switcher">
+                            <div id="polyglotLanguageSwitcher">
+                                <form action="#">
+                                    <select id="polyglot-language-options">
+                                        <option id="en" value="en" selected></option>
+                                        <option id="fr" value="fr"></option>
+                                        <option id="de" value="de"></option>
+                                        <option id="it" value="it"></option>
+                                        <option id="es" value="es"></option>
+                                    </select>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="link-btn"><a href="#" class="btn-style-one">Hesabım</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Main Header -->
+        <!-- Sticky Header-->
+        <div class="sticky_header">
+            <div class="container">
+                <div class="main_header_inner">
+                    <div class="main_header_logo">
+                        <figure>
+                            <a href="index.html"><img src="~/carola/carola/assets/images/logo-light.png" alt="Companny Logo"></a>
+                        </figure>
+                    </div>
+                    <div class="main_header_menu menu_area">
+                        <nav class="main-menu">
+                            <!--Keep This Empty / Menu will come through Javascript-->
+                        </nav>
+                    </div>
+                    <div class="header_right_content">
+                        <button class="search-toggler"><i class="fas fa-search"></i></button>
+                        <div class="link-btn"><a href="#" class="btn-style-one">Hesabım</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Sticky Header-->
+        <!-- Mobile Menu  -->
+        <div class="mobile-menu">
+            <div class="menu-backdrop"></div>
+            <div class="close-btn">X</div>
+            <nav class="menu-box">
+                <div class="nav-logo"><a href="index.html"><img src="~/carola/carola/assets/images/mobile-logo.png" alt="" title=""></a></div>
+                <div class="menu-outer"><!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header--></div>
+                <div class="contact-info">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li>Chicago 12, Melborne City, USA</li>
+                        <li><a href="tel:+8801682648101">+88 01682648101</a></li>
+                        <li><a href="mailto:info@example.com">info@example.com</a></li>
+                    </ul>
+                </div>
+                <ul class="social-links centred">
+                    <li><a href="index.html"><span class="fab fa-twitter"></span></a></li>
+                    <li><a href="index.html"><span class="fab fa-facebook-square"></span></a></li>
+                    <li><a href="index.html"><span class="fab fa-pinterest-p"></span></a></li>
+                    <li><a href="index.html"><span class="fab fa-instagram"></span></a></li>
+                    <li><a href="index.html"><span class="fab fa-youtube"></span></a></li>
+                </ul>
+            </nav>
+        </div>
+        <!-- End Mobile Menu -->
+
+    </header>
+    <!-- End Main Header -->
+    <!-- Slider Three -->
+    <style>
+        .slider.style_three .slide-item-content .image-layer::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(0,0,0,0.75) 40%, transparent 100%);
+        }
+        .slider.style_three .slide-item-content .slider_content {
+            margin-top: 20px;
+        }
+
+            .slider.style_three .slide-item-content .slider_content h1,
+            .slider.style_three .slide-item-content .slider_content h6,
+            .slider.style_three .slide-item-content .slider_content p {
+                color: #ffffff !important;
+            }
+    </style>
+    @await Component.InvokeAsync("_CarSliderComponentPartial")
+    
+    <!-- Slider Three End -->
+    <!-- Booking Section -->
+    @await Component.InvokeAsync("_CarSearchBarComponentPartial")
+    
+    <!-- Booking Section End -->
+    @await Component.InvokeAsync("_CarCategoryComponentPartial")
+    <!-- Car Type Section -->
+   
+    <!-- Car Type Section End -->
+    <!-- Divider Section -->
+    <section class="divider">
+        <div class="container">
+            <div class="border-divider"></div>
+        </div>
+    </section>
+    <!-- Divider Section End -->
+    <!-- Why Choose US Section -->
+    @await Component.InvokeAsync("_CarFeatureComponentPartial")
+    <!-- Why Choose US Section End -->
+    <!-- Brand Section 2 -->
+    @await Component.InvokeAsync("_CarBrandImageComponentPartial")
+   
+    <!-- Brand Section 2 End -->
+    <!-- Featured Cars Section -->
+  
+    <!-- Featured Cars Section End -->
+    <!-- Brand Section -->
+    @await Component.InvokeAsync("_CarBrandComponentPartial")
+    
+    <!-- Brand Section End -->
+    <!-- Video Section -->
+    <section class="video-section">
+        <div class="container-fulid">
+            <div class="vedio-section-outer" style="background-image: url(assets/images/background/dark-vedio-bg.jpg);">
+                <a href="https://www.youtube.com/watch?v=nfP5N9Yc72A&t=28s" class="lightbox-image"><i class="icon-14"></i></a>
+            </div>
+        </div>
+    </section>
+    <!-- Video Section End -->
+    <!-- Services Section -->
+    @await Component.InvokeAsync("_CarLocationComponentPartial")
+ 
+    <!-- Services Section End -->
+    <!-- Blog Section -->
+   
+    <!-- Blog Section End -->
+    <!-- Subscribe Section 2 -->
+    <section class="subscribe-section-2">
+        <div class="subscribe-layer-bg-2" style="background-image: url(~/carola/carola/assets/images/background/subscribe-inner-bg-2.png);"></div>
+        <div class="container">
+            <div class="subscribe-inner">
+                <h3>Subscribe for latest update <br>about <span>Automobil</span></h3>
+                <form action="contact.html" method="post" class="subscribe-form">
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Email Address">
+                        <button type="submit" class="btn-style-seven">Subscribe <i class="icon-13"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- Subscribe Section 2 End -->
+    <!-- Main Footer -->
+    <footer class="main_footer home-three">
+        <div class="container">
+            <div class="footer-top-outer">
+                <div class="row">
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+                        <div class="footer_widget footer_about_widget">
+                            <figure class="footer_widget_logo">
+                                <a href="index.html"><img src="~/carola/carola/assets/images/footer-logo.png" alt=""></a>
+                            </figure>
+                            <h6><strong>Follow Us On:</strong></h6>
+                            <ul class="social-links">
+                                <li><a href="#"><i class="fab fa-square-facebook"></i></a></li>
+                                <li><a href="#"><i class="fab fa-square-twitter"></i></a></li>
+                                <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                                <li><a href="#"><i class="fab fa-dribbble"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+                        <div class="footer_widget footer_resources_widget">
+                            <h4 class="footer_widget_title">Resources</h4>
+                            <ul class="resources_page_list">
+                                <li><a href="#">About Team</a></li>
+                                <li><a href="#">Policies</a></li>
+                                <li><a href="#">Careers</a></li>
+                                <li><a href="#">Press</a></li>
+                                <li><a href="#">Open Road</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-2 col-md-6 col-sm-12">
+                        <div class="footer_widget footer_community_widget">
+                            <h4 class="footer_widget_title">Community</h4>
+                            <ul class="community_page_list">
+                                <li><a href="#">Newsletter</a></li>
+                                <li><a href="#">Reviews</a></li>
+                                <li><a href="#">Testimonials</a></li>
+                                <li><a href="#">Social Group</a></li>
+                                <li><a href="#">Helpdesk</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+                        <div class="footer_widget footer_contact_widget">
+                            <h4 class="footer_widget_title">Contact</h4>
+                            <p>57 heold insaf Station Road, Cardiff, United Kingdom</p>
+                            <ul class="footer-info-list">
+                                <li><a href="#">info@example.com</a></li>
+                                <li><a href="#">029 2021 4012</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom-outer">
+                <div class="copyright">Copyright &copy; 2024 &nbsp;<a href="index.html">Carola</a> , Inc. All Rights Reserved</div>
+            </div>
+        </div>
+    </footer>
+    <!-- Main Footer End -->
+    <!-- Scroll to Top -->
+    <button class="scroll-top scroll-to-target" data-target="html">
+        <i class="icon-13"></i>
+    </button>
+    <!--End Scroll to Top -->
+    <!-- Include Js -->
+    <script src="~/carola/carola/assets/js/jquery-3.7.1.min.js"></script>
+    <script src="~/carola/carola/assets/js/jquery-ui.js"></script>
+    <script src="~/carola/carola/assets/js/moment.min.js"></script>
+    <script src="~/carola/carola/assets/js/daterangepicker.min.js"></script>
+    <script src="~/carola/carola/assets/js/bootstrap.min.js"></script>
+    <script src="~/carola/carola/assets/js/popper.min.js"></script>
+    <script src="~/carola/carola/assets/js/select2.min.js"></script>
+    <script src="~/carola/carola/assets/js/jquery.nice-select.min.js"></script>
+    <script src="~/carola/carola/assets/js/jquery.fancybox.js"></script>
+    <script src="~/carola/carola/assets/js/appear.js"></script>
+    <script src="~/carola/carola/assets/js/wow.js"></script>
+    <script src="~/carola/carola/assets/js/owl.js"></script>
+    <script src="~/carola/carola/assets/js/validation.js"></script>
+    <script src="~/carola/carola/assets/language-switcher/jquery.polyglot.language.switcher.js"></script>
+    <script src="~/carola/carola/assets/js/main.js"></script>
+    <script src="~/carola/carola/assets/js/booking-form.js"></script>
+    <!-- End Include Js -->
+
+</body>
+<!-- End Page Wrapper -->
+</html>

@@ -13,7 +13,9 @@ namespace Carola.EntityLayer.Entities
 		    
 		public string LogoUrl { get; set; }            // Marka logosu
 		public bool Status { get; set; }               // Aktif / Pasif
-	
+
+		public ICollection<Car> Cars { get; set; }
+
 
 	}
 }

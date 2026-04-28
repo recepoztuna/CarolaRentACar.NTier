@@ -15,6 +15,7 @@ namespace Carola.EntityLayer.Entities
 		public string Phone { get; set; }
 		public string DriverLicenseNumber { get; set; }
 		public DateTime BirthDate { get; set; }
+		public ICollection<Reservation> Reservations { get; set; }
 
 	}
 }

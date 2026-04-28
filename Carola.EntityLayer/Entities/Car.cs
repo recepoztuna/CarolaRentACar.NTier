@@ -10,7 +10,7 @@ namespace Carola.EntityLayer.Entities
 	public class Car
 	{
 		public int CarId { get; set; }
-		public string Brand { get; set; }
+		
 		public string Model { get; set; }
 		public int ModelYear { get; set; }
 		public string PlateNumber { get; set; }
@@ -22,11 +22,17 @@ namespace Carola.EntityLayer.Entities
 		public string FuelType { get; set; }
 		public string TransmissionType { get; set; }
 		public int CategoryId { get; set; }
-		public Category Category { get; set; }
+		
 		public string ImageUrl { get; set; }
 
+		public int BrandId { get; set; }      
+		public Brand Brand { get; set; }
+		public Category Category { get; set; }
+		public ICollection<Reservation> Reservations { get; set; }
+		public ICollection<CarImage> CarImages { get; set; }
 
-		
+
+
 
 	}
 }

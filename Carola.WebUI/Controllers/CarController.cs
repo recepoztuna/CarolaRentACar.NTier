@@ -1,4 +1,5 @@
 ﻿using Carola.BusinessLayer.Abstract;
+using Carola.DtoLayer.Dtos.CarDtos;
 using Carola.EntityLayer.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -18,21 +19,22 @@ namespace Carola.WebUI.Controllers
 
 		public async Task<IActionResult> CarList()
 		{
-			var values= await _carService.TGetAllAsync();
+			var values= await _carService.GetAllCarAsync();
 			return View(values);
 		}
 		
 		public async Task<IActionResult> CreateCar()
 		{
-			ViewBag.Categories = new SelectList(await _categoryService.TGetAllAsync(), "CategoryId", "CategoryName");
+			ViewBag.Categories = new SelectList(await _categoryService.GetAllCategoryAsync(), "CategoryId", "CategoryName");
 			return View();
 		}
 		[HttpPost]
-		public async Task<IActionResult> CreateCar(Car car)
+		public async Task<IActionResult> CreateCar(CreateCarDto createCarDto)
 		{
-			await _carService.TInsertAsync(car);
+			await _carService.CreateCarAsync(createCarDto);
 			return RedirectToAction("CarList");
 		}
 		
+
 	}
 }

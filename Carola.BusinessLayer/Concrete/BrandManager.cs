@@ -1,5 +1,7 @@
-﻿using Carola.BusinessLayer.Abstract;
+﻿using AutoMapper;
+using Carola.BusinessLayer.Abstract;
 using Carola.DataAccesLayer.Abstract;
+using Carola.DtoLayer.Dtos.BrandDtos;
 using Carola.EntityLayer.Entities;
 using FluentValidation;
 using System;
@@ -13,43 +15,55 @@ namespace Carola.BusinessLayer.Concrete
 	public class BrandManager : IBrandService
 	{
 		private readonly IBrandDal _brandDal;
-		private readonly IValidator<Brand> _validator;
+		private readonly IMapper _mapper;
+		private readonly IValidator<CreateBrandDto> _createValidator;
+		private readonly IValidator<UpdateBrandDto> _updateValidator;
 
-		public BrandManager(IBrandDal brandDal, IValidator<Brand> validator)
+		public BrandManager(IBrandDal brandDal, IMapper mapper,
+			IValidator<CreateBrandDto> createValidator,
+			IValidator<UpdateBrandDto> updateValidator)
 		{
 			_brandDal = brandDal;
-			_validator = validator;
+			_mapper = mapper;
+			_createValidator = createValidator;
+			_updateValidator = updateValidator;
 		}
 
-		public async Task TDeleteAsync(int id)
+		public async Task CreateBrandAsync(CreateBrandDto createBrandDto)
+		{
+			var validationResult = await _createValidator.ValidateAsync(createBrandDto);
+			if (!validationResult.IsValid)
+				throw new ValidationException(validationResult.Errors);
+
+			var value = _mapper.Map<Brand>(createBrandDto);
+			await _brandDal.InsertAsync(value);
+		}
+
+		public async Task DeleteBrandAsync(int id)
 		{
 			await _brandDal.DeleteAsync(id);
 		}
 
-		public async Task<List<Brand>> TGetAllAsync()
+		public async Task<List<ResultBrandDto>> GetAllBrandAsync()
 		{
-			return await _brandDal.GetAllAsync();
+			var values = await _brandDal.GetAllAsync();
+			return _mapper.Map<List<ResultBrandDto>>(values);
 		}
 
-		public async Task<Brand> TGetByIdAsync(int id)
+		public async Task<GetBrandByIdDto> GetBrandByIdAsync(int id)
 		{
-			return await _brandDal.GetByIdAsync(id);
+			var value = await _brandDal.GetByIdAsync(id);
+			return _mapper.Map<GetBrandByIdDto>(value);
 		}
 
-		public async Task TInsertAsync(Brand entity)
+		public async Task UpdateBrandAsync(UpdateBrandDto updateBrandDto)
 		{
-			var result = await _validator.ValidateAsync(entity);
-			if (!result.IsValid)
-				throw new ValidationException(result.Errors);
+			var validationResult = await _updateValidator.ValidateAsync(updateBrandDto);
+			if (!validationResult.IsValid)
+				throw new ValidationException(validationResult.Errors);
 
-
-			await _brandDal.InsertAsync(entity);
-
-		}
-
-		public async Task TUpdateAsync(Brand entity)
-		{
-			await _brandDal.UpdateAsync(entity);
+			var value = _mapper.Map<Brand>(updateBrandDto);
+			await _brandDal.UpdateAsync(value);
 		}
 	}
 }

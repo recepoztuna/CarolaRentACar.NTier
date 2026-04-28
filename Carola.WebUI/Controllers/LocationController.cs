@@ -1,4 +1,5 @@
 ﻿using Carola.BusinessLayer.Abstract;
+using Carola.DtoLayer.Dtos.LocationDtos;
 using Carola.EntityLayer.Entities;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,7 +16,7 @@ namespace Carola.WebUI.Controllers
 
 		public async  Task<IActionResult> LocationList()
 		{
-			var values=await _locationService.TGetAllAsync();
+			var values=await _locationService.GetAllLocationAsync();
 
 			return View(values);
 		}
@@ -25,29 +26,29 @@ namespace Carola.WebUI.Controllers
 		}
 
 		[HttpPost]
-		public async Task<IActionResult> CreateLocation(Location location)
+		public async Task<IActionResult> CreateLocation(CreateLocationDto createLocationDto)
 		{
-			await _locationService.TInsertAsync(location);
+			await _locationService.CreateLocationAsync(createLocationDto);
 
 			return RedirectToAction(" LocationList");
 		}
 		public async Task<IActionResult> DeleteLocation(int id)
 		{
-			await _locationService.TDeleteAsync(id);
+			await _locationService.DeleteLocationAsync(id);
 			return RedirectToAction("LocationList");
 		}
 
 		[HttpGet]
 		public async Task<IActionResult> UpdateLocation(int id)
 		{
-			var values=await _locationService.TGetByIdAsync(id);
+			var values=await _locationService.GetLocationByIdAsync(id);
 			return View(values);
 		}
 
 		[HttpPost]
-		public async Task<IActionResult> UpdateLocation(Location location)
+		public async Task<IActionResult> UpdateLocation(UpdateLocationDto updateLocationDto)
 		{
-			await _locationService.TUpdateAsync(location);
+			await _locationService.UpdateLocationAsync(updateLocationDto);
 			return RedirectToAction("LocationList");
 		}
 

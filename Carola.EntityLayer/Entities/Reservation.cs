@@ -19,5 +19,10 @@ namespace Carola.EntityLayer.Entities
 		public int ReservationStatus { get; set; }
 		public string Description { get; set; }
 
+		public Car Car { get; set; }
+		public Customer Customer { get; set; }
+		public Location PickupLocation { get; set; }
+		public Location ReturnLocation { get; set; }
+
 	}
 }
