@@ -37,6 +37,8 @@ builder.Services.AddScoped<IReservationDal, EFReservationDal>();
 builder.Services.AddScoped<ISliderDal, EFSliderDal>();
 builder.Services.AddScoped<IFeatureDal, EFFeatureDal>();
 builder.Services.AddScoped<ICarImageDal, EFCarImageDal>();
+builder.Services.AddScoped<IInsuranceCompanyDal, EFInsuranceCompanyDal>();
+
 
 // Business
 builder.Services.AddScoped<IBrandService, BrandManager>();
@@ -49,6 +51,7 @@ builder.Services.AddScoped<IReservationService, ReservationManager>();
 builder.Services.AddScoped<ISliderService, SliderManager>();
 builder.Services.AddScoped<IFeatureService, FeatureManager>();
 builder.Services.AddScoped<ICarImageService, CarImageManager>();
+builder.Services.AddScoped<IInsuranceCompanyService, InsuranceCompanyManager>();
 
 builder.Services.AddScoped<IValidator<CreateBrandDto>, CreateBrandValidator>();
 builder.Services.AddScoped<IValidator<UpdateBrandDto>, UpdateBrandValidator>();

@@ -18,9 +18,13 @@ namespace Carola.DtoLayer.Dtos.CarDtos
 		public string TransmissionType { get; set; }
 		public string ImageUrl { get; set; }
 
-		// İlişkili veriler - flatten ettik
+		public int LocationId { get; set; }
+		public string LocationName { get; set; } 
+		public string City { get; set; }
 		public string BrandName { get; set; }
 		public string CategoryName { get; set; }
+		public int SeatCount { get; set; }     
+		public int Mileage { get; set; }
 
 		public List<ResultCarImageDto> CarImages { get; set; }
 	}

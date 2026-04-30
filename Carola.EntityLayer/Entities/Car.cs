@@ -25,6 +25,8 @@ namespace Carola.EntityLayer.Entities
 		
 		public string ImageUrl { get; set; }
 
+		public int LocationId { get; set; }
+		public Location Location { get; set; }
 		public int BrandId { get; set; }      
 		public Brand Brand { get; set; }
 		public Category Category { get; set; }

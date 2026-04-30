@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace Carola.DataAccesLayer.Abstract
 {
-	public interface ILocationDal:IGenericDal<Location>
+	public interface IInsuranceCompanyDal:IGenericDal<InsuranceCompany>
 	{
-		Task<List<Location>> GetAllWithPersonAsync();
 	}
 }

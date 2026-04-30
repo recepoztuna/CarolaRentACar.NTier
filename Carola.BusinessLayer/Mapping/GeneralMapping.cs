@@ -27,13 +27,18 @@ namespace Carola.BusinessLayer.Mapping
 			CreateMap<Customer, CreateCustomerDto>().ReverseMap();
 			CreateMap<Customer, UpdateCustomerDto>().ReverseMap();
 			CreateMap<Customer, GetCustomerByIdDto>().ReverseMap();
+			CreateMap<Car, ResultCarDto>()
+	.ForMember(dest => dest.BrandName, opt => opt.MapFrom(src => src.Brand.BrandName))
+	.ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category.CategoryName))
+	.ForMember(dest => dest.SeatCount, opt => opt.MapFrom(src => src.SeatCount))
+	.ForMember(dest => dest.Mileage, opt => opt.MapFrom(src => src.Mileage))
+	.ForMember(dest => dest.LocationName, opt => opt.MapFrom(src => src.Location.LocationName))
+	.ForMember(dest => dest.City, opt => opt.MapFrom(src => src.Location.City))
+	.ReverseMap();
 
-			// Car
-			CreateMap<Car, ResultCarDto>().ReverseMap();
 			CreateMap<Car, CreateCarDto>().ReverseMap();
 			CreateMap<Car, UpdateCarDto>().ReverseMap();
 			CreateMap<Car, GetCarByIdDto>().ReverseMap();
-
 			// Brand
 			CreateMap<Brand, ResultBrandDto>().ReverseMap();
 			CreateMap<Brand, CreateBrandDto>().ReverseMap();
@@ -47,7 +52,11 @@ namespace Carola.BusinessLayer.Mapping
 			CreateMap<Category, GetCategoryByIdDto>().ReverseMap();
 
 			// Location
-			CreateMap<Location, ResultLocationDto>().ReverseMap();
+			CreateMap<Location, ResultLocationDto>()
+	.ForMember(dest => dest.AuthorizedPersonName,
+			   opt => opt.MapFrom(src => src.AuthorizedPerson.FirstName + " " + src.AuthorizedPerson.LastName))
+	.ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => src.ImageUrl))
+	.ReverseMap();
 			CreateMap<Location, CreateLocationDto>().ReverseMap();
 			CreateMap<Location, UpdateLocationDto>().ReverseMap();
 			CreateMap<Location, GetLocationByIdDto>().ReverseMap();

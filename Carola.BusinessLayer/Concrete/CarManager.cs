@@ -65,5 +65,12 @@ namespace Carola.BusinessLayer.Concrete
 			var value = _mapper.Map<Car>(updateCarDto);
 			await _carDal.UpdateAsync(value);
 		}
+		public async Task<List<ResultCarDto>> GetLast6CarsAsync()
+		{
+			var values = await _carDal.GetLast6CarsAsync();
+			return _mapper.Map<List<ResultCarDto>>(values);
+		}
+
+		
 	}
 }

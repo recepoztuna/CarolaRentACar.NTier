@@ -1,0 +1,17 @@
+﻿@model List<Carola.EntityLayer.Entities.InsuranceCompany>
+<section class="brand-section-2 home-three">
+    <div class="container-fulid">
+        <div class="brand-outer-box-2">
+            @foreach (var item in Model)
+            {
+                <div class="single-brand-item-2" style="padding: 15px;">
+                    <div class="brand-image" style="display:flex; align-items:center; justify-content:center;">
+                        <img src="@item.LogoUrl"
+                             alt="@item.CompanyName"
+                             style="width:100%; height:80px; object-fit:contain;">
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

@@ -46,7 +46,8 @@ namespace Carola.BusinessLayer.Concrete
 
 		public async Task<List<ResultLocationDto>> GetAllLocationAsync()
 		{
-			var values = await _locationDal.GetAllAsync();
+			var values = await _locationDal.GetAllWithPersonAsync(); 
+			
 			return _mapper.Map<List<ResultLocationDto>>(values);
 		}
 

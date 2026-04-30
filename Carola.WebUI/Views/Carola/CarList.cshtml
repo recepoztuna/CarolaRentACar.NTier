@@ -260,11 +260,18 @@
     @await Component.InvokeAsync("_CarFeatureComponentPartial")
     <!-- Why Choose US Section End -->
     <!-- Brand Section 2 -->
-    @await Component.InvokeAsync("_CarBrandImageComponentPartial")
+    <div class="container" style="padding-top: 60px;">
+        <div class="section-title centred mb_60">
+            <span class="sub-title">Güvenceli Yolculuk</span>
+            <h2 class="title">Anlaşmalı Sigorta Şirketlerimiz</h2>
+        </div>
+    </div>
+    @await Component.InvokeAsync("_CarInsuranceCompanyComponentPartial")
+    
    
     <!-- Brand Section 2 End -->
     <!-- Featured Cars Section -->
-  
+    @await Component.InvokeAsync("_CarLastImageComponentPartial")
     <!-- Featured Cars Section End -->
     <!-- Brand Section -->
     @await Component.InvokeAsync("_CarBrandComponentPartial")
@@ -273,8 +280,12 @@
     <!-- Video Section -->
     <section class="video-section">
         <div class="container-fulid">
-            <div class="vedio-section-outer" style="background-image: url(assets/images/background/dark-vedio-bg.jpg);">
-                <a href="https://www.youtube.com/watch?v=nfP5N9Yc72A&t=28s" class="lightbox-image"><i class="icon-14"></i></a>
+            <div class="vedio-section-outer"
+                 style="background-image: url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1920&q=80');">
+                <a href="https://www.youtube.com/watch?v=nfP5N9Yc72A&t=28s"
+                   class="lightbox-image">
+                    <i class="icon-14"></i>
+                </a>
             </div>
         </div>
     </section>

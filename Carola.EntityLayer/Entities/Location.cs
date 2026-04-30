@@ -14,8 +14,10 @@ namespace Carola.EntityLayer.Entities
 		public string City { get; set; }
 		public string Address { get; set; }
 
+		public string ImageUrl { get; set; }
 		public int UserId { get; set; }
 		public User AuthorizedPerson { get; set; } // Navigation
+		public ICollection<Car> Cars { get; set; }
 
 
 	}

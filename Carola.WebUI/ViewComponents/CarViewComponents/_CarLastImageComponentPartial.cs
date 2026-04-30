@@ -1,12 +1,21 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Carola.BusinessLayer.Abstract;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Carola.WebUI.ViewComponents.CarViewComponents
 {
 	public class _CarLastImageComponentPartial:ViewComponent
 	{
-		public IViewComponentResult Invoke()
+		private readonly ICarService _carService;
+
+		public _CarLastImageComponentPartial(ICarService carService)
 		{
-			return View();
+			_carService = carService;
+		}
+
+		public async Task<IViewComponentResult> InvokeAsync()
+		{
+			var values = await _carService.GetLast6CarsAsync();
+			return View(values);
 		}
 	}
 }

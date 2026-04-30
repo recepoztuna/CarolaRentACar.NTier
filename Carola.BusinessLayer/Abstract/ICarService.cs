@@ -15,5 +15,6 @@ namespace Carola.BusinessLayer.Abstract
 		Task CreateCarAsync(CreateCarDto createCarDto);
 		Task UpdateCarAsync(UpdateCarDto updateCarDto);
 		Task DeleteCarAsync(int id);
+		Task<List<ResultCarDto>> GetLast6CarsAsync();
 	}
 }

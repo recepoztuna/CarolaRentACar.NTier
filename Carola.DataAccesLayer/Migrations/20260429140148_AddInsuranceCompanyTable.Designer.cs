@@ -4,6 +4,7 @@ using Carola.DataAccesLayer.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Carola.DataAccesLayer.Migrations
 {
     [DbContext(typeof(CarolaContext))]
-    partial class CarolaContextModelSnapshot : ModelSnapshot
+    [Migration("20260429140148_AddInsuranceCompanyTable")]
+    partial class AddInsuranceCompanyTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -74,9 +77,6 @@ namespace Carola.DataAccesLayer.Migrations
                     b.Property<bool>("IsAvailable")
                         .HasColumnType("bit");
 
-                    b.Property<int>("LocationId")
-                        .HasColumnType("int");
-
                     b.Property<int>("LuggageCapacity")
                         .HasColumnType("int");
 
@@ -106,8 +106,6 @@ namespace Carola.DataAccesLayer.Migrations
                     b.HasIndex("BrandId");
 
                     b.HasIndex("CategoryId");
-
-                    b.HasIndex("LocationId");
 
                     b.ToTable("Cars");
                 });
@@ -259,10 +257,6 @@ namespace Carola.DataAccesLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ImageUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("LocationName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -401,17 +395,9 @@ namespace Carola.DataAccesLayer.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Carola.EntityLayer.Entities.Location", "Location")
-                        .WithMany("Cars")
-                        .HasForeignKey("LocationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Brand");
 
                     b.Navigation("Category");
-
-                    b.Navigation("Location");
                 });
 
             modelBuilder.Entity("Carola.EntityLayer.Entities.CarImage", b =>
@@ -491,11 +477,6 @@ namespace Carola.DataAccesLayer.Migrations
             modelBuilder.Entity("Carola.EntityLayer.Entities.Customer", b =>
                 {
                     b.Navigation("Reservations");
-                });
-
-            modelBuilder.Entity("Carola.EntityLayer.Entities.Location", b =>
-                {
-                    b.Navigation("Cars");
                 });
 
             modelBuilder.Entity("Carola.EntityLayer.Entities.User", b =>

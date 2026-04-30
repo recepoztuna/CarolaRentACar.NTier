@@ -69,6 +69,7 @@ namespace Carola.DataAccesLayer.Concrete
 		public DbSet<Slider> Sliders { get; set; }
 		public DbSet<Feature> Features { get; set; }
 		public DbSet<CarImage> CarImages { get; set; }
+		public DbSet<InsuranceCompany> InsuranceCompanies { get; set; }
 
 	}
 }
